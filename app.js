@@ -3,6 +3,10 @@ const app = express()
 const mongoose = require ('mongoose')
 const JazzyRouter = require ('./router/jazzyRouter.js')
 const port = process.env.port || 6060
+const cors = require('cors')
+app.use(cors())
+
+
 
 require('dotenv').config()
 
@@ -18,6 +22,12 @@ const connect = ()=>{
     console.log(err);
   }
 }
+
+
+app.get('/',(req,res)=>{
+  res.send('welcome')
+
+})
 
 app.use ('/jazzy', JazzyRouter)
 
